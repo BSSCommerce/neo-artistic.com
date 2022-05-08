@@ -31,8 +31,8 @@ Neo-artistic.com is a NFT marketplace on NEO N3 Blockchain. This project include
 # System Diagram
 The beginning idea was changed because there were some technical issues. So we will show both old & new system diagram
 
-- Old diagram: ![old_diagram](docs/img/marketplace_diagram_old.png)
-- New diagram: ![new_diagram](docs/img/marketplace_diagram_new.png)
+- Old diagram: ![old_diagram](docs/img/marketplace_diagram_old.jpg)
+- New diagram: ![new_diagram](docs/img/marketplace_diagram_new.jpg)
 
 ####First difference comes from connections with the NEOFS system. There are reasons:
 - Our api uses Java while NEOFS supports Go/C#.
