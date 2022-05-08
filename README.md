@@ -34,12 +34,58 @@ The beginning idea was changed because there were some technical issues. So we w
 - Old diagram: ![old_diagram](docs/img/marketplace_diagram_old.jpg)
 - New diagram: ![new_diagram](docs/img/marketplace_diagram_new.jpg)
 
-####First difference comes from connections with the NEOFS system. There are reasons:
+#### First difference comes from connections with the NEOFS system. There are reasons:
 - Our api uses Java while NEOFS supports Go/C#.
 - User must upload file and mint NFT in one action. If we use other APIs from backend, that process becomes complicated more than needed.
 - We want to upload/download file on the web-app directly.
-####Second difference comes from invoking smart contracts. There are reasons:
+
+#### Second difference comes from invoking smart contracts. There are reasons:
 - Some transactions must be done with connected wallet, so they should be done from web-app instead of APIs.
 - APIs need some credential information to do transactions, but we will get security issues if we send some credential information to API.
 
-####The new diagram is selected to explain how the system works.
+#### The new diagram is selected to explain how the system works.
+- 1 - Smart Contracts using Neow3j library:
+  - BSS.NeoArtistic.NFTMarket: smart contract for NFT marketplace
+  - Bss.neo.BinanceManagerContract: smart contract to get price from Binance public api
+- 2 - Restful APIs to get data from Blockchain via smart contracts:
+  - List all NFTs: returned data will be converted to List<NFTToken> 
+  - Get NFTs of a wallet address: returned data will be converted to List<NFTToken>
+  - Get a NFT properties: returned data will be converted to NFTToken
+  - Get NEO-USDT price via Oracle smart contract (Bss.neo.BinanceManagerContract)
+- 3 - NFT Marketplace requests data from Restful API endpoints
+  - /tokens: get all NFTs.
+  - /tokens-of: get NFTs of a wallet address.
+  - /neo-price: get NEO in USDT
+  - /get-token-by-id: get NFT by id
+  - All returned data is JSON format.
+- 4 - NFT Marketplace connect to NeoLine wallet
+  - To mint NFT
+  - To add NFT auctions
+  - To change NFT price & royalty
+  - To accept auction & start transaction.
+- 5 - NFT Marketplace use NEO-WALLET adapter & NEO-JS library
+  - To connect with NeoLine
+  - To invoke function from smart contracts
+- 6 - NFT Marketplace connect to NEOFS Gateway
+  - Use upload/<container_id> to upload file to container Id
+  - Use get/<container_id>/<object_id> to get file
+  - NEOFS Gateway domain: [neo-fs.bsscommerce.com](https://neo-fs.bsscommerce.com)
+- 7 - NEOFS NODE provides gRPC endpoints
+  - To connect with NeoFS gateway
+  - To create container from web-app via web-gRPC
+  - NEOFS NODE with Envoy Proxy: [neo-fs-rpc.neo-artistic.com](https://neo-fs-rpc.neo-artistic.com)
+- 8 - Stats dAPP get data from Restful API
+  - Get NFTs data to analyze
+
+This is a simple diagram show how dAPP and NEOFS works together:
+
+![nft marketplace and neofs](docs/img/nftmarketplace_neofs_diagram.jpg)
+
+You can try to create your own container ID and upload testing files at here: [https://neo-artistic.com/upload](https://neo-artistic.com/upload)
+
+![nft marketplace - neofs flow](docs/img/nftmarketplace_neofs_flow.jpg)
+
+NEOFS Contract Address is `NadZ8YfvkddivcFFkztZgfwxZyKf1acpRF`
+
+_To make minting NFT process easy, dApp doesn't require transfer GAS or create container ID. dApp uses default account!._
+

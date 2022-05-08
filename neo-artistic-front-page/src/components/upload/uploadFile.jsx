@@ -200,7 +200,7 @@ function UploadFile() {
         </Stack.Item>
         { privateKey && <React.Fragment>
            <Stack.Item align="center">
-             {accountBalance === 0 ? <span>Send some GAS from {address} to the NeoFS contract (NSEawP75SPnnH9sRtk18xJbjYGHu2q5m1W) in order to begin</span> :
+             {accountBalance === 0 ? <span>Send some GAS from {address} to the NeoFS contract (NadZ8YfvkddivcFFkztZgfwxZyKf1acpRF) in order to begin</span> :
             <span>NeoFS Account Balance for {address}: {accountBalance}</span>
              }
           </Stack.Item>
