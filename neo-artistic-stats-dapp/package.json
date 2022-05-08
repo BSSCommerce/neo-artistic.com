@@ -1,0 +1,37 @@
+{
+  "name": "neo-stats-artistic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "shx rm -rf .next",
+    "dev": "next dev -p 3010",
+    "build": "yarn clean && next build",
+    "start": "next start -p 3010",
+    "lint": "next lint",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "^5.3.1",
+    "@mui/material": "latest",
+    "bn": "^1.0.5",
+    "copy-to-clipboard": "^3.3.1",
+    "prop-types": "latest",
+    "next": "^11.1.2",
+    "next-compose-plugins": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-dropzone": "^11.5.1",
+    "swr": "^1.1.2",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "next-transpile-modules": "^8.0.0",
+    "shx": "^0.3.3"
+  }
+}

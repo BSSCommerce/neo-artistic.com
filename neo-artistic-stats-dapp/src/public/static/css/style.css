@@ -1,0 +1,131 @@
+.dropzone {
+    background-color: whitesmoke;
+    padding: 10px;
+    border: dashed cornflowerblue;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form-control {
+    margin: 10px 0;
+}
+.form-control .MuiFormControl-root {
+    margin-right: 5px;
+}
+.picasart-avatar > div {
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: -45px
+}
+.picasart-profile-banner .MuiPaper-root {
+    border-radius: unset;
+    border: 0;
+    box-shadow: none;
+}
+
+.picasart-name-bio {
+    text-align: center;
+}
+
+.nft-card {
+    text-align: center;
+}
+.nft-card .MuiCardHeader-title {
+    font-size: 1rem;
+}
+.nft-card .MuiCardHeader-subheader {
+    font-size: 0.75rem;
+}
+
+.nft-price span {
+    margin: 2px;
+    font-size: 0.8rem;
+}
+
+.nft-card-actions {
+    font-size: 0.8rem;
+}
+.token-information .section:not(.header) {
+    padding: 5px 0;
+    box-sizing: border-box;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.token-information .section p {
+    margin: 0;
+}
+.token-information .section .price {
+    font-size: 1.5rem;
+}
+.token-information .section .section-title {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.token-information .section .token-info-item {
+    display: flex;
+    justify-content: space-between;
+}
+.minting-form {
+    padding: 0 16px 20px;
+    border: whitesmoke solid 1px;
+}
+
+.picasarts-next-link {
+    text-decoration: none;
+}
+
+.picasarts-next-link.main-menu {
+    color: white;
+    font-weight: bold;
+}
+.nft-author-name {
+    color: #0072CE;
+}
+
+.nft-title {
+    color: black;
+    font-weight: bold;
+}
+
+.nft-image {
+    max-height: 150px;
+    overflow: hidden;
+}
+.nft-image img {
+    width: 100%;
+}
+.token-image-wrapper.MuiGrid-item {
+    /*padding: 27px;*/
+    /*background-color: burlywood;*/
+    /*border-radius: 15px 0 0;*/
+}
+
+/*.picasarts-footer {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: 200px;*/
+/*}*/
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flex-avatar {
+    display: flex;
+    align-items: center;
+}
