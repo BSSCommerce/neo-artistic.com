@@ -89,3 +89,61 @@ NEOFS Contract Address is `NadZ8YfvkddivcFFkztZgfwxZyKf1acpRF`
 
 _To make minting NFT process easy, dApp doesn't require transfer GAS or create container ID. dApp uses default account!._
 
+# NFT Marketplace Reference Implementation
+- [Neow3j library](https://neow3j.io/#/)
+- [NEP-11 Tutorial](https://developers.neo.org/tutorials/neow3j-nep11)
+- [Oracle Implementation](https://github.com/neow3j/neow3j-examples-java/tree/master/src/main/java/io/neow3j/examples/contractdevelopment/contracts)
+- [Neo Wallet Adapter](https://github.com/rentfuse-labs/neo-wallet-adapter)
+- [NeoLine for N3](https://neoline.io/dapi/N3.html)
+- [NeoFS demo (not up to date)](https://github.com/CityOfZion/neofs-demo/)
+- [NeoFS HTTP Gateway](https://github.com/nspcc-dev/neofs-http-gw)
+- [NeoFS Node](https://github.com/nspcc-dev/neofs-node)
+- [NeoFs API](https://github.com/nspcc-dev/neofs-api)
+- [gRPC-Web](https://github.com/grpc/grpc-web)
+- [gRPC-web and protoc plugin to generate JS from .proto](https://github.com/grpc/grpc-web/releases)
+
+# Progress:
+- [x] NFT & Market smart contracts following NEP-11
+- [x] demo pay out royalties (FTs and NEO)
+- [x] test and determine standards for markets (best practice?) to buy/sell NFTs (finish standard) with FTs (already standard)
+- [x] demo some basic auction types
+- [x] frontend with MUI (Material Design - React UI components )
+- [x] first pass / internal audit
+- [x] integrate with NeoFS IPFS
+- [x] integrate with Binance open API - convert NEO to USD
+- [x] use MongoDB to store extra profile data such as profile name, collection, banner, logo...
+- [x] implement simple collection feature: each near wallet account has a collection name.
+- [x] show collections & NFTs on home page
+- [x] show related NFTs item on NFT detailed page.
+- [ ] NFT DEFI with landing, borrow and staking.
+- [ ] implement NFT portal switch between chains (NEO, NEAR, Aurora, XRP, Ethereum...)
+- [ ] connect with bridged tokens e.g. buy and sell with wETH/nDAI (or whatever we call these)
+
+# Tech Stack
+- [NextJS 11](https://nextjs.org/)
+- [Mongo Atlas](https://www.mongodb.com/atlas/database)
+- [MUI](https://mui.com/)
+- [Java - Neow3j library](https://neow3j.io/#/)
+- [Java - Spring Boot]((https://start.spring.io/))
+- [Neo Wallet Adapter](https://github.com/rentfuse-labs/neo-wallet-adapter)
+- [gRPC-Web](https://github.com/grpc/grpc-web)
+- [NeoFS](https://fs.neo.org/)
+
+# Installation
+## NeoFS
+### NeoFS HTTP gateway
+### NeoFS gRPC node
+### Envoy proxy
+## NEO tools
+### CLI
+### GUI
+# Working
+## Smart contracts
+### NFT marketplace contract
+### Oracle Contract
+## Restful API
+## NFT marketplace frontpage
+## NFT marketplace statistic page
+
+
+
