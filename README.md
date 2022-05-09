@@ -1,5 +1,6 @@
 # General Info
-Neo-artistic.com is a NFT marketplace on NEO N3 Blockchain. This project includes folders:
+Neo-artistic.com is a NFT marketplace on NEO N3 Blockchain (TESTNET). This project need to resolve security issues & improve smart contracts ready for production (MAINNET).
+Its source code includes folders:
 
 - Neo-artistic-api: 
   - End-points: [neo-api.neo-artistic.com](https://neo-api.neo-artistic.com)
