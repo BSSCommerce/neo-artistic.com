@@ -1,0 +1,31 @@
+---
+
+version: "2.4"
+services:
+  storage01:
+    image: nspccdev/neofs-storage-testnet:0.27.7
+    container_name: neofs-testnet
+    env_file: node_config.env
+    network_mode: host
+    restart: always
+    volumes:
+      - /var/www/html/neofs-storage/storage:/storage
+      - ./my_wallet.key:/node.key
+    stop_signal: SIGINT
+  vmagent:
+    image: victoriametrics/vmagent:v1.61.0
+    container_name: vmagent
+    depends_on:
+      - storage01
+    env_file: node_config.env
+    command:
+      - '-promscrape.config=/configs/prometheus.yml'
+      - '-remoteWrite.url=https://collector.fs.neo.org/api/v1/write'
+    network_mode: host
+    restart: always
+    volumes:
+      - ./prometheus.yml:/configs/prometheus.yml
+volumes:
+  neofs_storage:
+
+
