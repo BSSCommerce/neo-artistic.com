@@ -1,14 +1,14 @@
 # General Info
-Neo-artistic.com is a NFT marketplace on NEO N3 Blockchain (TESTNET). This project need to resolve security issues & improve smart contracts ready for production (MAINNET).
+Neo-artistic.com is a NFT marketplace on NEO N3 Blockchain (TESTNET). This project need to resolve security issues & improve smart contracts to deploy on production (MAINNET).
 Its source code includes folders:
 
-- Neo-artistic-api: 
+- **Neo-artistic-api:** 
   - End-points: [neo-api.neo-artistic.com](https://neo-api.neo-artistic.com)
-  - Handle & manipulate data returned from Smart Contracts. 
-  - Provide REST APIs for dApp to get structured data.
+  - Handle & manipulate returned data from Smart Contracts. 
+  - Provide REST APIs for dApp and return structured data (not StackItem).
   - Use [Java (1.8)](https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html), [Neow3j (3.16)](https://neow3j.io/#/), [Spring Boot (2.5.13)](https://start.spring.io/) with Maven build tool.
 
-- Neo-artistic-front-page: 
+- **Neo-artistic-front-page:** 
   - Website: [neo-artistic.com](http://neo-artistic.com/)
   - Display NFTs
   - Sell & buy NFTs
@@ -18,13 +18,13 @@ Its source code includes folders:
   - Use [NextJS (11)](https://nextjs.org/), [Material UI](https://mui.com/)
   - Use [Google Protobuf](https://www.npmjs.com/package/google-protobuf), [gRpc-web](https://www.npmjs.com/package/grpc-web)
   - Use [neon-js](https://www.npmjs.com/package/@cityofzion/neon-js), [neo-wallet-adapter](https://github.com/rentfuse-labs/neo-wallet-adapter)
-- Neo-artistic-smart-contracts:
+- **Neo-artistic-smart-contracts:**
   - Include smart contracts for NFT and Oracle
   - BSS.NeoArtistic.NFTMarket: smart contract for NFT marketplace
   - Bss.neo.BinanceManagerContract: smart contract to get price from Binance public api, using Neo Oracle Service.
   - Bss.neo.ProviderManagerContract: smart contract for registering multiple price source, but it is not ready and still testing phase.
   - Use 100% [Neow3j (3.16)](https://neow3j.io/#/)
-- Neo-artistic-stats-dapp:
+- **Neo-artistic-stats-dapp:**
   - Website: [stats.neo-artistic.com](https://stats.neo-artistic.com/)
   - Display reports & statistics of NFT marketplace
   - Use [NextJS (11)](https://nextjs.org/), [Material UI](https://mui.com/)
@@ -45,37 +45,37 @@ The beginning idea was changed because there were some technical issues. So we w
 - APIs need some credential information to do transactions, but we will get security issues if we send some credential information to API.
 
 #### The new diagram is selected to explain how the system works.
-- 1 - Smart Contracts using Neow3j library:
+- **1 - Smart Contracts using Neow3j library:**
   - BSS.NeoArtistic.NFTMarket: smart contract for NFT marketplace
   - Bss.neo.BinanceManagerContract: smart contract to get price from Binance public api
-- 2 - Restful APIs to get data from Blockchain via smart contracts:
+- **2 - Restful APIs to get data from Blockchain via smart contracts:**
   - List all NFTs: returned data will be converted to List<NFTToken> 
   - Get NFTs of a wallet address: returned data will be converted to List<NFTToken>
   - Get a NFT properties: returned data will be converted to NFTToken
   - Get NEO-USDT price via Oracle smart contract (Bss.neo.BinanceManagerContract)
-- 3 - NFT Marketplace requests data from Restful API endpoints
+- **3 - NFT Marketplace requests data from Restful API endpoints**
   - /tokens: get all NFTs.
   - /tokens-of: get NFTs of a wallet address.
   - /neo-price: get NEO in USDT
   - /get-token-by-id: get NFT by id
   - All returned data is JSON format.
-- 4 - NFT Marketplace connect to NeoLine wallet
+- **4 - NFT Marketplace connect to NeoLine wallet**
   - To mint NFT
   - To add NFT auctions
   - To change NFT price & royalty
   - To accept auction & start transaction.
-- 5 - NFT Marketplace use NEO-WALLET adapter & NEO-JS library
+- **5 - NFT Marketplace use NEO-WALLET adapter & NEO-JS library**
   - To connect with NeoLine
   - To invoke function from smart contracts
-- 6 - NFT Marketplace connect to NEOFS Gateway
+- **6 - NFT Marketplace connect to NEOFS Gateway**
   - Use upload/<container_id> to upload file to container Id
   - Use get/<container_id>/<object_id> to get file
   - NEOFS Gateway domain: [neo-fs.bsscommerce.com](https://neo-fs.bsscommerce.com)
-- 7 - NEOFS NODE provides gRPC endpoints
+- **7 - NEOFS NODE provides gRPC endpoints**
   - To connect with NeoFS gateway
   - To create container from web-app via web-gRPC
   - NEOFS NODE with Envoy Proxy: [neo-fs-rpc.neo-artistic.com](https://neo-fs-rpc.neo-artistic.com)
-- 8 - Stats dAPP get data from Restful API
+- **8 - Stats dAPP get data from Restful API**
   - Get NFTs data to analyze
 
 This is a simple diagram show how dAPP and NEOFS work together:
@@ -88,7 +88,7 @@ You can try to create your own container ID and upload testing files at here: [h
 
 NEOFS Contract Address is `NadZ8YfvkddivcFFkztZgfwxZyKf1acpRF`
 
-_To make minting NFT process easy, dApp doesn't require transfer GAS or create container ID. dApp uses default account!._
+_**To make minting NFT process easy**, users don't need to transfer GAS or create container ID. dApp uses default account and existed container ids!._
 
 # NFT Marketplace Reference Implementation
 - [Neow3j library](https://neow3j.io/#/)
@@ -164,11 +164,11 @@ _To make minting NFT process easy, dApp doesn't require transfer GAS or create c
 ## Smart contracts
 ### NFT marketplace contract
 - Go to NonFungibleToken folder, run command `./gradlew neow3jCompile`
-- Use NEO-GUI or NEO-CLI to build smart contracts
+- Use NEO-GUI or NEO-CLI to deploy smart contracts
 ![neo-gui-deploy](docs/img/deploy_contract.jpg)
 ### Oracle Contract
 - Go to BinanceProvider folder, run command `./gradlew neow3jCompile`
-- Use NEO-GUI or NEO-CLI to build smart contracts
+- Use NEO-GUI or NEO-CLI to deploy smart contracts
 ## Restful API
 - Install Java JDK 1.8.
 - Install Maven.
