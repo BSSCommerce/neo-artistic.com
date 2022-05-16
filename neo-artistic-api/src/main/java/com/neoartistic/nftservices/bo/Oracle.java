@@ -11,7 +11,7 @@ import io.neow3j.types.Hash160;
 public class Oracle {
 	public static Neow3j NEOW3J_TESTNET = Neow3j.build(new HttpService("http://seed2t4.neo.org:20332"));
 	public static String getNeoPrice() throws IOException {
-		  	Hash160 contractHash = new Hash160("0x9d7526a8d2cfe497f7fa7a4df1cbf38c5b2b085a");
+		  	Hash160 contractHash = new Hash160("0x2df1b0ec5c5b15183fa26b0c10a098c9af0c829a");
 	        SmartContract smartContract = new SmartContract(contractHash, NEOW3J_TESTNET);
 	        InvocationResult result = smartContract.callInvokeFunction("getStoredResponse").getInvocationResult();
 	        String storedResponse = result.getStack().get(0).getString();

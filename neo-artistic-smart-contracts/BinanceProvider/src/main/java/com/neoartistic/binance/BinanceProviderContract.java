@@ -28,12 +28,12 @@ public class BinanceProviderContract {
     // Original Contract Hex must be removed first two character (0x) then this
     // address must be converted to little-endian
     // static final Hash160 providerRegistry = new Hash160(
-    //         Helper.reverse(
-    //                 StringLiteralHelper.hexToBytes("c678f501e840dcac9d64a489db9531f57a721922").toByteArray()));
+    // Helper.reverse(
+    // StringLiteralHelper.hexToBytes("c678f501e840dcac9d64a489db9531f57a721922").toByteArray()));
     static int gasForResponse = OracleContract.MinResponseFee;
 
     public static void getPriceRequest(String symbol) {
-        String prefixPriceUrl = "https://binance.com/api/v3/klines?interval=1m&limit=1";
+        String prefixPriceUrl = "https://api.binance.com/api/v3/klines?interval=1m&limit=1";
         String prefixPriceInstId = "&symbol=";
         String prefixPriceTime = "&endTime=";
         String filter = "$[0][4]";
@@ -44,11 +44,10 @@ public class BinanceProviderContract {
             Runtime.log("Could not find block");
         }
         int timestamp = block.timestamp;
-        String symbolUrl = prefixPriceUrl + prefixPriceInstId + newSymbol + prefixPriceTime + StdLib.itoa(timestamp, 10);
+        String symbolUrl = prefixPriceUrl + prefixPriceInstId + newSymbol + prefixPriceTime
+                + StdLib.itoa(timestamp, 10);
         OracleContract.request(symbolUrl, filter, "callback", null, gasForResponse);
     }
-
-
 
     public static void callback(String url, Object userData, int responseCode, ByteString response) {
         Storage.put(Storage.getStorageContext(), 0, url);
@@ -67,7 +66,6 @@ public class BinanceProviderContract {
     public static ByteString getStoredResponse() {
         return Storage.get(Storage.getReadOnlyContext(), 2);
     }
-
 
     private static void throwIfSignerIsNotContractOwner() {
         assert Runtime.checkWitness(contractOwner) : "No authorization.";
